@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <glut.h>
 GLfloat a = 0, b = 0, c = 0, d = 0, e = 0;
+
 void building();
 void building1();
 void outline();
@@ -9,6 +10,7 @@ void road();
 void display2();
 void display3();
 void build_outline();
+
 void update(int value)
 {
     a += 20.0;      //Plane position takeoff on x axis
@@ -17,7 +19,7 @@ void update(int value)
     if (b <= -78.0) // moving of run way
         b = 0.0;
     glutPostRedisplay();
-    glutTimerFunc(150, update, 0); //delay
+   glutTimerFunc(150, update, 0); //delay
 }
 void display(void)
 {
@@ -244,6 +246,8 @@ void building()
     glVertex2f(250.0, 80);
     glEnd();
 
+    
+
     build_outline();
 }
 void build_outline() //building out lines
@@ -300,22 +304,28 @@ void blast(void) //blast polygon construction
     glBegin(GL_POLYGON);
     glVertex2f(404.4, 320.0);
     glVertex2f(384.0, 285.0);
+    glColor3f(0.0, 0.0, 1.0);
     glVertex2f(368.0, 344.5);
     glVertex2f(344.0, 355.0);
     glVertex2f(347.2, 414.5);
+    glColor3f(0.0, 1.0, 0.0);
     glVertex2f(332.8, 442.5);
     glVertex2f(347.2, 477.5);
     glVertex2f(352.0, 530.0);
     glVertex2f(379.2, 519.5);
+    glColor3f(0.0, 0.0, 1.0);
     glVertex2f(396.8, 565.0);
     glVertex2f(416.0, 530.0);
     glVertex2f(440.0, 547.5);
+    glColor3f(1.0, 1.0, 0.0);
     glVertex2f(452.8, 512.5);
     glVertex2f(472.0, 512.5);
     glVertex2f(475.2, 470.5);
+    glColor3f(0.0, 1.0, 1.0);
     glVertex2f(488.0, 442.5);
     glVertex2f(488.0, 404.0);
     glVertex2f(470.0, 372.5);
+    glColor3f(0.3, 1.0, 0.6);
     glVertex2f(475.2, 337.5);
     glVertex2f(464.0, 306.0);
     glVertex2f(444.8, 320.0);
@@ -323,6 +333,7 @@ void blast(void) //blast polygon construction
     glVertex2f(404.8, 320.0);
     glEnd();
     glPopMatrix();
+    
 }
 void road()
 {
@@ -461,6 +472,70 @@ void display2()
     glVertex2f(50.0, 15.0);
     glEnd();
     glPopMatrix();
+
+
+    //3
+
+    glColor3f(0.60, 0.40, 0.70);
+    glBegin(GL_POLYGON);
+    glVertex2f(150.0, 80.0);
+    glVertex2f(150.0, 280.0);
+    glVertex2f(200.0, 200.0);
+    glVertex2f(200.0, 0.0);
+    glEnd();
+    glColor3f(0.75, 0.75, 0.75);
+    glBegin(GL_POLYGON);
+    glVertex2f(200.0, 0.0);
+    glVertex2f(200.0, 200.0);
+    glVertex2f(250.0, 200.0);
+    glVertex2f(250.0, 0.0);
+    glEnd();
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_POLYGON);
+    glVertex2f(200.0, 200.0);
+    glVertex2f(150.0, 280.0);
+    glVertex2f(200.0, 280.0);
+    glVertex2f(250.0, 200.0);
+    glEnd();
+    glColor3f(0.60, 0.40, 0.70);
+    glBegin(GL_POLYGON); //upper triangle of building
+    glVertex2f(200.0, 200.0);
+    glVertex2f(150.0, 280.0);
+    glVertex2f(200.0, 280.0);
+    glEnd();
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES); //seperation line of floors
+    glVertex2f(150.0, 80);
+    glVertex2f(200.0, 0.0);
+    glEnd();
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(150.0, 180);
+    glVertex2f(200.0, 100);
+    glEnd();
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(150.0, 280);
+    glVertex2f(200.0, 200);
+    glEnd();
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(250.0, 0.0);
+    glVertex2f(200.0, 0.0);
+    glEnd();
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(150.0, 100);
+    glVertex2f(200.0, 100);
+    glEnd();
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(250.0, 200);
+    glVertex2f(200.0, 200);
+    glColor3f(0.0, 0.0, 0.0);
+    glBegin(GL_LINES);
+    glVertex2f(150.0, 80);
+    glEnd();
 }
 
 void display3()
@@ -546,12 +621,22 @@ void display3()
 }
 void myinit()
 {
-    glClearColor(0.9f, 0.6f, 0.0f, 0.0f);
+    glClearColor(0.196078, 0.6, 0.8, 1);
     glColor3f(1.0, 0.0, 0.0);
     glPointSize(1.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluOrtho2D(0.0, 499.0, 0.0, 499.0);
+}
+void keys(unsigned char key, int x, int y)
+{
+    if (key == 's')
+    {
+        glutTimerFunc(100, update, 0);
+
+    }
+
+    if (key == 'q') exit(0);
 }
 void main(int argc, char* argv[])
 {
@@ -562,6 +647,7 @@ void main(int argc, char* argv[])
     glutCreateWindow("AERO");
     glutDisplayFunc(display);
     myinit();
-    glutTimerFunc(100, update, 0);
+    glutKeyboardFunc(keys);
+    //glutTimerFunc(100, update, 0);
     glutMainLoop();
 }

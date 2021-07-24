@@ -1,3 +1,3 @@
 ﻿  aero.cpp
-C:\Users\AMRUTHA K\source\repos\MiniProject\aero.cpp(557,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\AMRUTHA K\source\repos\MiniProject\aero.cpp(642,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
   MiniProject.vcxproj -> C:\Users\AMRUTHA K\source\repos\MiniProject\Debug\MiniProject.exe
